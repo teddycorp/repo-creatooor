@@ -24,7 +24,7 @@ type RepoDiagnostic = {
 
   await notifyDiscord(
     discordWebhook,
-    `***${trigger} triggered Wonderland github repos health check*** 🏥\nhttps://github.com/defi-wonderland/repo-creatooor/actions/workflows/health-check.yml`
+    `***${trigger} triggered Wonderland github repos health check*** 🏥\nhttps://github.com/${owner}/repo-creatooor/actions/workflows/health-check.yml`
   );
 
   console.info('Running health checks on all repos...');
