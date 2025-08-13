@@ -113,10 +113,10 @@ export class GithubApi {
     return data;
   }
 
-  async addAutolink(owner: string, repo: string, projectCode: string): Promise<void> {
+  async addAutolink(owner: string, repo: string, linearOrg: string, projectCode: string): Promise<void> {
     const body: object = {
       key_prefix: projectCode,
-      url_template: `https://linear.app/defi-wonderland/issue/${projectCode}-<num>`,
+      url_template: `https://linear.app/${linearOrg}/issue/${projectCode}-<num>`,
     };
     const { data } = await this.axios.post(`/repos/${owner}/${repo}/autolinks`, body);
 

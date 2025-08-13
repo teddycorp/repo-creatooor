@@ -77,8 +77,9 @@ You should make the following secrets and variables avialable to the workflows, 
 
 #### Variables
 
-- `GH_OWNER:` The organization repos should be created under, a.k.a the slug for your organization.
-- `GH_APP_ID:`  The ID for the GitHub App you just created. You can find it its 'about' section.
+- `GH_OWNER`:The organization repos should be created under, a.k.a the slug for your organization.
+- `GH_APP_ID`: The ID for the GitHub App you just created. You can find it its 'about' section.
+- `LINEAR_ORG`: The name of your linear organization, as shown in the url for e.g. an issue `https://linear.app/${linearOrg}/issue/FOO-420`
 
 #### Secrets
 

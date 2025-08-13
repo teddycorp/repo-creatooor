@@ -96,9 +96,9 @@ export class RepoUtils {
     console.log(`Signature requirement for ${branchName} branch enabled!`);
   }
 
-  async addAutolink(owner: string, repoName: string, projectCode: string): Promise<void> {
+  async addAutolink(owner: string, repoName: string, linearOrg: string, projectCode: string): Promise<void> {
     console.log(`Adding autolink for ${projectCode}...`);
-    await this.githubApi.addAutolink(owner, repoName, projectCode);
+    await this.githubApi.addAutolink(owner, repoName, linearOrg, projectCode);
     console.log(`Autolink for ${projectCode} added!`);
   }
 
