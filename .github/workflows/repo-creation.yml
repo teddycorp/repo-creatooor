@@ -7,7 +7,7 @@ on:
         description: 'Repository name'
         required: true
       template:
-        description: 'Template (eg. defi-wonderland/solidity-foundry-boilerplate)'
+        description: 'Template (eg. your-org/your-repo)'
         required: false
       linear_project_code:
         description: 'Linear project code (eg. BES)'
