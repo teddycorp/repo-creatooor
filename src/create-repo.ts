@@ -35,7 +35,7 @@ const createRepo = async () => {
 
     if (projectCode != '') {
       if (linearOrg == '') {
-          throw new Error('You must configure a Linear org in order to link the repo to a Linear project code')
+        throw new Error('You must configure a Linear org in order to link the repo to a Linear project code');
       }
       await repoUtils.addAutolink(owner, repo, linearOrg, projectCode);
       await repoUtils.addPrTemplate(owner, repo, projectCode);

@@ -32,11 +32,11 @@ Please refer to the [official documentation](https://docs.github.com/en/apps/cre
 ![](./resources/app-creation-5.png)
 
 - Fill the required information.
-    - The name should be unique GitHub-wide
-    - Description is not necessary
-    - Homepage URL can be the repo's own URL
-    - There's no need to request user authorization, since the app will not be associated with users, instead performing actions on the organization directly
-    - This makes 'expire user tokens' irrelevant as well
+  - The name should be unique GitHub-wide
+  - Description is not necessary
+  - Homepage URL can be the repo's own URL
+  - There's no need to request user authorization, since the app will not be associated with users, instead performing actions on the organization directly
+  - This makes 'expire user tokens' irrelevant as well
 
 ![](./resources/app-creation-6.png)
 
@@ -45,31 +45,29 @@ Please refer to the [official documentation](https://docs.github.com/en/apps/cre
 ![](./resources/app-creation-7.png)
 
 - The app will need the following permissions
-    - Repository permissions
-        - Administration: read and write
-        - Contents: read and write
-    - Organization permissions
-        - Members: read-only
+  - Repository permissions
+    - Administration: read and write
+    - Contents: read and write
+  - Organization permissions
+    - Members: read-only
 
 ![](./resources/app-creation-8.png)
 
 - We strongly recommend to only allow the app to be installable within your organization, as allowing other orgs to use your app could make you liable for it misbehaving, and you'd have to set your app's private key as a secret in both orgs (this is shown below)
 
 ![](./resources/app-creation-9.png)
-- Afer this you'll be redirected to the app's 'About' page. From here you should:
-    - Save the 'App ID' for future use.
-    - Generate a private key for the app. This will be done client'side and saved as a `.pem` file in your browser's downloads. Save it for future use.
-![](./resources/app-creation-10.png)
+
+- Afer this you'll be redirected to the app's 'About' page. From here you should: - Save the 'App ID' for future use. - Generate a private key for the app. This will be done client'side and saved as a `.pem` file in your browser's downloads. Save it for future use.
+  ![](./resources/app-creation-10.png)
 
 - Then, you can finally install the newly-created app in your organization!
-![](./resources/app-creation-11.png)
+  ![](./resources/app-creation-11.png)
 
 - Approve the app for all repositories.
-![](./resources/app-creation-12.png)
+  ![](./resources/app-creation-12.png)
 
 - This will leave you in the app's installation page. This page will have a url of the form `https://github.com/organizations/${org}/settings/installations/${installation_id}`. Save the installation id for later use (there's no way to retrieve this from the UI directly).
-![](./resources/app-creation-13.png)
-
+  ![](./resources/app-creation-13.png)
 
 ### Configuring the action
 
