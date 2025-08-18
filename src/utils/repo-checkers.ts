@@ -11,7 +11,7 @@ export class RepoCheckers {
     private repo: string,
     private template: string = '',
     private admin: string,
-    private logInfo: boolean = true
+    private logInfo: boolean = true,
   ) {}
 
   log(logData: string) {
