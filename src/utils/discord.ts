@@ -1,8 +1,11 @@
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 
-export const notifyDiscord = async (discordWebHook: string, message: string): Promise<AxiosResponse<any, any>> => {
-  const result = await axios.post(discordWebHook, {
-    content: message,
-  });
-  return result;
+export const notifyDiscord = async (discordWebHook: string, message: string): Promise<void> => {
+  if (discordWebHook == '') {
+    console.log('Would notify to Discord:', message);
+  } else {
+    return axios.post(discordWebHook, {
+      content: message,
+    });
+  }
 };

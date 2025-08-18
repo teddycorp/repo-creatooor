@@ -19,6 +19,10 @@ const createRepo = async () => {
   const projectCode = getEnvVariableOrEmpty('LINEAR_PROJECT_CODE');
   const linearOrg = getEnvVariableOrEmpty('LINEAR_ORG');
 
+  if (discordWebhook == '') {
+    console.warn('Discord webhook not configured, logging here instead');
+  }
+
   notifyDiscord(discordWebhook, `${admin} triggered repo creation: **${owner}/${repo}** 📦 `);
 
   try {

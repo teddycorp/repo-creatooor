@@ -81,7 +81,7 @@ You should make the following secrets and variables avialable to the workflows, 
 
 #### Secrets
 
-- `DISCORD_WEBHOOK`: a discord webhook where to send notifications about created repos and the results of `repo-doctor`
+- `DISCORD_WEBHOOK`: an optional discord webhook where to send notifications about created repos and the results of `repo-doctor`. If you don't configure it, you'll have to open the workflow's output to see this information.
 - `GH_INSTALLATION_ID`: The installation id from the app's installation page's URL.
 - `GH_APP_PRIVATE_KEY:` The contents of the `.pem` file downloaded after app creation.
 
