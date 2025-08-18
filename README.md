@@ -2,7 +2,7 @@
 
 The repository creator workflow allows users to create new repositories with all the Wonderland securities configurations.
 
-This guide is aimed at end users within your organization. If you're interested in configuring this for your organzation, see [SETUP.md](./docs/SETUP.md)
+This guide is aimed at end users within your organization. If you're interested in configuring this for your organization, see [SETUP.md](./docs/SETUP.md).
 
 ## How to use it?
 

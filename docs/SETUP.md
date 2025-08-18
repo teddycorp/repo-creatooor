@@ -2,7 +2,7 @@
 
 ## Preconditions
 
-- GitHub Teams: a necessary condition since branch protection rules, one of the most important features for this tool to enforce, are not feasible without it.
+- GitHub Teams: a necessary condition since branch protection rules, one of the most important features for this tool to enforce, are not available on private repositories without it, and this tool creates private repositories. This is the cheaper of the two available paid plans for an organization (the other being Enterprise, which is not necessary).
 - A team within your organization called `all`, including all of your organization's members. This is necessary to make private repos accessible by default to all organization members.
 
 ## Steps
@@ -77,7 +77,7 @@ You should make the following secrets and variables avialable to the workflows, 
 
 - `GH_OWNER`:The organization repos should be created under, a.k.a the slug for your organization.
 - `GH_APP_ID`: The ID for the GitHub App you just created. You can find it its 'about' section.
-- `LINEAR_ORG`: The name of your linear organization, as shown in the url for e.g. an issue `https://linear.app/${linearOrg}/issue/FOO-420`
+- `LINEAR_ORG`: The name of your linear organization, as shown in the url for e.g. an issue `https://linear.app/${linearOrg}/issue/FOO-420`. It is optional, since not all organizations use Linear for project management. Not defining it will only cause an error if you define a linear project code when creating a repository.
 
 #### Secrets
 
