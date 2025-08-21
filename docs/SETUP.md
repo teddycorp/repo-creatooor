@@ -3,12 +3,11 @@
 ## Preconditions
 
 - GitHub Teams: a necessary condition since branch protection rules, one of the most important features for this tool to enforce, are not available on private repositories without it, and this tool creates private repositories. This is the cheaper of the two available paid plans for an organization (the other being Enterprise, which is not necessary).
-- A team within your organization called `all`, including all of your organization's members. This is necessary to make private repos accessible by default to all organization members.
 
 ## Steps
 
 To start, fork this repository into your organization.
-After this, you'll have to configure a GitHub App and configure it so the workflows defined in this repository can perform the required administrative actions in your organization.
+After this, you'll have to configure a GitHub App and set it up so the workflows defined in this repository can perform the required administrative actions in your organization.
 As a final step, you'll configure the secrets for the workflows so they can execute as the GitHub App.
 
 ### Creating the GitHub App
@@ -49,7 +48,7 @@ Please refer to the [official documentation](https://docs.github.com/en/apps/cre
     - Administration: read and write
     - Contents: read and write
   - Organization permissions
-    - Members: read-only
+    - Members: read-only, or read-write if you want it to be able to create teams defined in `src/config.ts` for you.
 
 ![](./resources/app-creation-8.png)
 
@@ -87,8 +86,13 @@ You should make the following secrets and variables avialable to the workflows, 
 
 With this, you should be able to run the `repo-creation` and `repo-doctor` workflows for your organization, as described in [the README](../README.md)
 
+### Wrapping up
+
+- We highly recommend having a team within your organization called `all`, including all of your organization's members. This is necessary to make private repos (remember this tool creates private repositories only, they still have to be made public manually) accessible by default to everybody in the org. The default config will grant the group `pull` rights to repos it creates.
+- Similarly, feel free to modify `src/config.ts` to assign the permissions you want to newly created repositories. Any team not already present in the organization will be created (with `secret` visibility).
+- We recommend you configure this repository's workflows so they can only be run using the workflow file on `main`, otherwise anyone able to push to this repository can execute arbitrary actions with the permissions allowed to the Github App.
+
 ## Troubleshooting guide
 
-- `404` error code on calling `/orgs/${owner}/teams/${team_slug}/repos/${owner}/${repo}`: your organization most likely lacks the team called `all`.
 - `403` error code on calling `/repos/${org}/${repo}/branches/${branch}/protection`: your organization does not have a GitHub Teams subscription.
 - `403` error code with message `Resource not accessible by integration`, when calling `/repos/${org}/${repo}/branches`: The GitHub App lacks the `Contents` Repository permissions
