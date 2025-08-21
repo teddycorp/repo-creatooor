@@ -56,7 +56,7 @@ const createRepo = async () => {
   } catch (err) {
     await notifyDiscord(
       discordWebhook,
-      `Repo **${repo}** creation failed ❌ please check the detailed logs at: https://github.com/${owner}/repo-creatooor/actions/workflows/repo-creation.yml`
+      `Repo **${repo}** creation failed ❌ please check the detailed logs at: https://github.com/${owner}/repo-creatooor/actions/workflows/repo-creation.yml`,
     );
     throw err;
   }
