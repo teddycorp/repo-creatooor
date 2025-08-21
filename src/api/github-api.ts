@@ -237,4 +237,10 @@ export class GithubApi {
       permission,
     });
   }
+
+  async createTeam(owner: string, teamSlug: string): Promise<void> {
+    await this.axios.post(`/orgs/${owner}/teams`, {
+      name: teamSlug,
+    });
+  }
 }

@@ -3,6 +3,7 @@ import { notifyDiscord } from './utils/discord';
 import { getEnvVariable, getEnvVariableOrEmpty } from './utils/env';
 import { RepoCheckers } from './utils/repo-checkers';
 import { RepoUtils } from './utils/repo-utils';
+import config from './config';
 
 const createRepo = async () => {
   const appId = getEnvVariable('GH_APP_ID');
@@ -41,7 +42,18 @@ const createRepo = async () => {
       await repoUtils.addPrTemplate(owner, repo, projectCode);
     }
     await repoUtils.addCollaborator(owner, repo, admin, 'admin');
-    await repoUtils.addTeamAccess(owner, repo, 'all', 'pull');
+    Object.entries(config.teamPermissions).forEach(async ([key, value]) => {
+      try {
+        await repoUtils.addTeamAccess(owner, repo, key, value);
+      } catch (error: any) {
+        // if the error is not related to the team not existing, throw it back
+        if (error.response.status != 404) throw error;
+        // otherwise, create the team and try again
+        console.log(`team ${key} does not exist, creating it`);
+        await githubApi.createTeam(owner, key);
+        await repoUtils.addTeamAccess(owner, repo, key, value);
+      }
+    });
     await repoUtils.checkBranchExistsOrCreate(owner, repo, 'dev', 'main');
     await repoUtils.updateRepo(owner, repo, '');
     await repoUtils.updateBranchProtection(owner, repo, 'main', true);
