@@ -3,7 +3,7 @@ import { notifyDiscord } from './utils/discord';
 import { getEnvVariable, getEnvVariableOrEmpty } from './utils/env';
 import { RepoCheckers } from './utils/repo-checkers';
 import { RepoUtils } from './utils/repo-utils';
-import config from './config';
+import {defaultTeamRepoPermissionsConfig} from './config/default';
 
 const createRepo = async () => {
   const appId = getEnvVariable('GH_APP_ID');
@@ -42,7 +42,7 @@ const createRepo = async () => {
       await repoUtils.addPrTemplate(owner, repo, projectCode);
     }
     await repoUtils.addCollaborator(owner, repo, admin, 'admin');
-    Object.entries(config.teamPermissions).forEach(async ([key, value]) => {
+    Object.entries(defaultTeamRepoPermissionsConfig()).forEach(async ([key, value]) => {
       try {
         await repoUtils.addTeamAccess(owner, repo, key, value);
       } catch (error: any) {
