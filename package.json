@@ -8,10 +8,10 @@
   "main": "index.js",
   "scripts": {
     "create-repo": "ts-node src/create-repo.ts && tsc",
-    "repo-doctor": "ts-node src/repo-doctor.ts && tsc",
     "lint:check": "prettier --check .",
     "lint:fix": "sort-package-json && prettier --write .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "repo-doctor": "ts-node src/repo-doctor.ts && tsc"
   },
   "husky": {
     "hooks": {

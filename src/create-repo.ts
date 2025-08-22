@@ -3,7 +3,7 @@ import { notifyDiscord } from './utils/discord';
 import { getEnvVariable, getEnvVariableOrEmpty } from './utils/env';
 import { RepoCheckers } from './utils/repo-checkers';
 import { RepoUtils } from './utils/repo-utils';
-import {defaultTeamRepoPermissionsConfig} from './config/default';
+import { defaultTeamRepoPermissionsConfig } from './config/default';
 
 const createRepo = async () => {
   const appId = getEnvVariable('GH_APP_ID');
@@ -68,7 +68,7 @@ const createRepo = async () => {
   } catch (err) {
     await notifyDiscord(
       discordWebhook,
-      `Repo **${repo}** creation failed ❌ please check the detailed logs at: https://github.com/${owner}/repo-creatooor/actions/workflows/repo-creation.yml`
+      `Repo **${repo}** creation failed ❌ please check the detailed logs at: https://github.com/${owner}/repo-creatooor/actions/workflows/repo-creation.yml`,
     );
     throw err;
   }

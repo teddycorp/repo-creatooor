@@ -74,11 +74,11 @@ export class GithubApi {
     owner: string,
     repo: string,
     branch: string,
-    updateBranchProtectionPayload: UpdateBranchProtectionPayload
+    updateBranchProtectionPayload: UpdateBranchProtectionPayload,
   ): Promise<BranchProtectionResponse> {
     const { data } = await this.axios.put<BranchProtectionResponse>(
       `/repos/${owner}/${repo}/branches/${branch}/protection`,
-      updateBranchProtectionPayload
+      updateBranchProtectionPayload,
     );
     return data;
   }
@@ -96,7 +96,7 @@ export class GithubApi {
   async requireSignature(owner: string, repo: string, branch: string): Promise<RequireSignatureResponse> {
     const { data } = await this.axios.post<RequireSignatureResponse>(
       `/repos/${owner}/${repo}/branches/${branch}/protection/required_signatures`,
-      {}
+      {},
     );
     return data;
   }
@@ -143,7 +143,7 @@ export class GithubApi {
 
   async createRepoFromTemplate(
     template: string,
-    createRepoFromTemplatePayload: CreateRepoFromTemplatePayload
+    createRepoFromTemplatePayload: CreateRepoFromTemplatePayload,
   ): Promise<CreateRepoFromTemplateResponse> {
     const { data } = await this.axios.post<CreateRepoFromTemplateResponse>(`/repos/${template}/generate`, createRepoFromTemplatePayload);
     return data;
@@ -197,7 +197,7 @@ export class GithubApi {
   async getCollaborators(
     owner: string,
     repo: string,
-    params?: { affiliation?: CollaboratorAffiliation; per_page?: number; page?: number }
+    params?: { affiliation?: CollaboratorAffiliation; per_page?: number; page?: number },
   ): Promise<CollaboratorsResponse> {
     const affiliation = params?.affiliation ?? 'all';
     const per_page = params?.per_page ?? 30;
