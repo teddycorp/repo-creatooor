@@ -2,6 +2,8 @@
 
 The repository creator workflow allows users to create new repositories with all the Wonderland securities configurations.
 
+This guide is aimed at end users within your organization. If you're interested in configuring this for your organization, see [SETUP.md](./docs/SETUP.md).
+
 ## How to use it?
 
 1. Click on the **Actions** button and then click on the "Repo creation" action.

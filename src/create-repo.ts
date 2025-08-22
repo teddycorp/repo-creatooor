@@ -17,6 +17,7 @@ const createRepo = async () => {
   const repoCheckers = new RepoCheckers(githubApi, owner, repo, template, admin);
   const discordWebhook = getEnvVariableOrEmpty('DISCORD_WEBHOOK');
   const projectCode = getEnvVariableOrEmpty('LINEAR_PROJECT_CODE');
+  const linearOrg = getEnvVariableOrEmpty('LINEAR_ORG');
 
   notifyDiscord(discordWebhook, `${admin} triggered repo creation: **${owner}/${repo}** 📦 `);
 
@@ -33,7 +34,10 @@ const createRepo = async () => {
     await repoUtils.checkBranchExistsOrCreate(owner, repo, 'main');
 
     if (projectCode != '') {
-      await repoUtils.addAutolink(owner, repo, projectCode);
+      if (linearOrg == '') {
+        throw new Error('You must configure a Linear org in order to link the repo to a Linear project code');
+      }
+      await repoUtils.addAutolink(owner, repo, linearOrg, projectCode);
       await repoUtils.addPrTemplate(owner, repo, projectCode);
     }
     await repoUtils.addCollaborator(owner, repo, admin, 'admin');
@@ -52,7 +56,7 @@ const createRepo = async () => {
   } catch (err) {
     await notifyDiscord(
       discordWebhook,
-      `Repo **${repo}** creation failed ❌ please check the detailed logs at: https://github.com/defi-wonderland/repo-creatooor/actions/workflows/repo-creation.yml`
+      `Repo **${repo}** creation failed ❌ please check the detailed logs at: https://github.com/${owner}/repo-creatooor/actions/workflows/repo-creation.yml`,
     );
     throw err;
   }

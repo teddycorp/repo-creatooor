@@ -83,7 +83,7 @@ import { RepoUtils } from './utils/repo-utils';
 
     notifyDiscord(discordWebhook, discordNotifications.join('\n\n'));
   } catch (err) {
-    const message = `👨‍⚕️❌ Repo doctor failed to heal **${repo}**\nIt will need manual intervention, please check the detailed logs at: https://github.com/defi-wonderland/repo-creatooor/actions/workflows/repo-doctor.yml`;
+    const message = `👨‍⚕️❌ Repo doctor failed to heal **${repo}**\nIt will need manual intervention, please check the detailed logs at: https://github.com/${owner}/repo-creatooor/actions/workflows/repo-doctor.yml`;
     console.info(message);
     discordNotifications.push(message);
     notifyDiscord(discordWebhook, discordNotifications.join('\n\n'));

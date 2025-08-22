@@ -8,11 +8,10 @@
   "main": "index.js",
   "scripts": {
     "create-repo": "ts-node src/create-repo.ts && tsc",
-    "health-check": "ts-node src/repos-health-check.ts && tsc",
-    "repo-doctor": "ts-node src/repo-doctor.ts && tsc",
-    "lint:check": "prettier --check './**'",
-    "lint:fix": "sort-package-json && prettier --write './**'",
-    "prepare": "husky install"
+    "lint:check": "prettier --check .",
+    "lint:fix": "sort-package-json && prettier --write .",
+    "prepare": "husky install",
+    "repo-doctor": "ts-node src/repo-doctor.ts && tsc"
   },
   "husky": {
     "hooks": {
@@ -24,26 +23,26 @@
     "package.json": "sort-package-json"
   },
   "dependencies": {
-    "axios": "1.2.1",
-    "dotenv": "16.0.3",
+    "axios": "1.11.0",
+    "dotenv": "17.2.1",
     "jsonwebtoken": "9.0.2",
-    "lint-staged": "13.1.0",
-    "yaml": "2.2.0"
+    "lint-staged": "16.1.5",
+    "yaml": "2.8.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "12.1.4",
-    "@commitlint/config-conventional": "12.1.4",
-    "@types/chai": "4.3.3",
-    "@types/jsonwebtoken": "9.0.6",
-    "@types/mocha": "10.0.0",
-    "@types/node": "18.11.3",
-    "chai": "4.3.6",
-    "husky": "8.0.3",
-    "mocha": "10.1.0",
-    "prettier": "2.7.1",
-    "sort-package-json": "1.50.0",
-    "ts-mocha": "10.0.0",
-    "ts-node": "10.9.1",
-    "typescript": "4.7.4"
+    "@commitlint/cli": "19.8.1",
+    "@commitlint/config-conventional": "19.8.1",
+    "@types/chai": "5.2.2",
+    "@types/jsonwebtoken": "9.0.10",
+    "@types/mocha": "10.0.10",
+    "@types/node": "24.3.0",
+    "chai": "5.3.1",
+    "husky": "9.1.7",
+    "mocha": "11.7.1",
+    "prettier": "3.6.2",
+    "sort-package-json": "3.4.0",
+    "ts-mocha": "11.1.0",
+    "ts-node": "10.9.2",
+    "typescript": "5.9.2"
   }
 }
